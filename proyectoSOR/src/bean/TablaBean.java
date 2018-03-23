@@ -12,6 +12,7 @@ import vo.Persona;
 @SessionScoped
 public class TablaBean {
 
+	int x;
 	private Persona miPersona;
 	PersonaDao personaDao = new PersonaDao();
 	ArrayList<Persona> listaPersonas = new ArrayList<>();
