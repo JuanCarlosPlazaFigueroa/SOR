@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head jsf:id="head">
+<title>Proyectos en proceso</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+
+<link rel="stylesheet" href="marelialize/css/estilosFormulario.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link rel="stylesheet" href="marelialize/css/materialize.css" />
+
+<h:link />
+</head>
+
+<body>
+	<ul id='dropdown1' class='dropdown-content'>
+
+
+		<li><a href="#!"><i class="material-icons"></i>Consultar caso
+				de uso</a></li>
+
+		<li><a href="#!"><i class="material-icons"></i>Consultar
+				historia de usuario</a></li>
+	</ul>
+
+	<nav class="green darken-3">
+		<div class="nav-wrapper">
+			<a class="brand-logo"></a>
+
+			<ul class=" hide-on-med-and-down">
+				<li><a href="crearCu.jsf">crear proyecto<i
+						class="material-icons right">history</i></a></li>
+
+
+				<li><a href="consultarCU.jsf">consultar caso de uso<i
+						class="material-icons right">history</i></a></li>
+
+			</ul>
+		</div>
+	</nav>
+
+	<h:form enctype="multipart/form-data">
+
+		<div class="row">
+
+			<div class="row">
+
+				<div class="input-field col s6">
+					<h:inputText id="Cu" value="#{beanCU.miCu.casoUso}" type="text" class="validate"></h:inputText>
+					<label for="Rf">CASO DE USO </label>
+				</div>
+				<div class="input-field col s6">
+					<h:inputText id="descripcion" value="#{beanCU.miCu.descripcionCU}" type="text" class="validate"></h:inputText>
+					<label for="Nombre">DESCRIPCION</label>
+				</div>
+
+				<div class="input-field col s6">
+					<h:inputText id="rol" value="#{beanCU.miCu.rol}" type="text" class="validate"></h:inputText>
+					<label for="rol">ROL</label>
+				</div>
+
+ 
+
+    <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <h:inputFile value="#{beanCU.file}" />
+      </div>
+      <div class="file-path-wrapper">
+             <h:commandButton value="subir imagen" actionListener="#{beanCU.upload()}"  class="file-path validate" />
+		        
+      </div>
+    </div>
+  
+        
+		        
+		   
+		
+		    
+
+				<div id="modal1" class="modal">
+					<div class="modal-content">
+
+
+						<p>
+							Felicitaciones este nuevo proyecto se a registrado con exito<BR />
+							¿Desea registrar otro proyecto?
+						</p>
+
+
+					</div>
+ 
+
+					<div class="modal-footer">
+
+
+						<h:commandButton action="#{beanCU.agregarPersona()}"
+							value="Registrar  Proyecto"
+							styleClass="waves-effect waves-light btn botom right green darken-3"></h:commandButton>
+
+
+						<h:commandButton value="no,gracias"
+							styleClass="waves-effect waves-light btn botom left green darken-3"
+							action="#" actionListener="#{beanCU.agregarPersona()}"></h:commandButton>
+
+					</div>
+				</div>
+			</div>
+
+
+			<a class="waves-effect waves-light btn modal-trigger green right"
+				id="boton" href="#modal1">Guardar</a>
+
+
+		</div>
+
+
+
+	</h:form>
+
+
+
+
+
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="marelialize/js/materialize.min.js"></script>
+
+	<script>
+        $('.input-field').input({
+            inDuration: 300,
+            outDuration: 225,
+            constrainWidth: false, // Does not change width of dropdown to that of the activator
+            hover: true, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: false, // Displays dropdown below the button
+            alignment: 'left', // Displays dropdown with edge aligned to the left of button
+            stopPropagation: false // Stops event propagation
+
+         
+        }
+        );
+
+                
+    </script>
+
+	<script>
+
+
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Hoy',
+            clear: 'Limpiar',
+            close: 'Listo',
+            closeOnSelect: false // Close upon selecting a date,
+          });
+
+
+        
+		</script>
+
+	<script>
+
+		  $('.modal').modal({
+		      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+		      opacity: .5, // Opacity of modal background
+		      inDuration: 300, // Transition in duration
+		      outDuration: 200, // Transition out duration
+		      startingTop: '4%', // Starting top style attribute
+		      endingTop: '10%', // Ending top style attribute
+		      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+		        
+		        console.log(modal, trigger);
+		      },
+		      
+		    }
+		  );
+		   
+
+       
+
+        
+		</script>
+
+
+
+
+
+</body>
+</html>

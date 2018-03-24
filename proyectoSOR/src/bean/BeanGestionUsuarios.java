@@ -5,18 +5,18 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import dao.PersonaDao;
-import vo.Persona;
+import dao.DaoGestionUsurios;
+import vo.VoGestionUsuarios;
 
 @ManagedBean
 @SessionScoped
-public class TablaBean {
+public class BeanGestionUsuarios {
 
 	int x;
-	private Persona miPersona;
-	PersonaDao personaDao = new PersonaDao();
-	ArrayList<Persona> listaPersonas = new ArrayList<>();
-	ArrayList<Persona> listaRequisitos = new ArrayList<>();
+	private VoGestionUsuarios miPersona;
+	DaoGestionUsurios personaDao = new DaoGestionUsurios();
+	ArrayList<VoGestionUsuarios> listaPersonas = new ArrayList<>();
+	ArrayList<VoGestionUsuarios> listaRequisitos = new ArrayList<>();
 
 	private String nombre;
 	private String correo;
@@ -26,8 +26,8 @@ public class TablaBean {
 	
 	
 
-	public TablaBean() {
-		miPersona = new Persona();
+	public BeanGestionUsuarios() {
+		miPersona = new VoGestionUsuarios();
 		consultarLista();
 		consultaIndividual();
 		GeneralRequisitos();
@@ -52,7 +52,7 @@ public class TablaBean {
 	public void agregarPersona() {
 		System.out.println(nombre + documento + correo);
 		setRes(personaDao.agregarPersona(miPersona));
-		miPersona = new Persona();
+		miPersona = new VoGestionUsuarios();
 	}
 
 	public void agregar() {
@@ -100,14 +100,14 @@ public class TablaBean {
 
 	}
 
-	public void eliminarPersona(Persona miPersona) {
+	public void eliminarPersona(VoGestionUsuarios miPersona) {
 
 		setRes(personaDao.eliminarPersona(miPersona));
 		listaPersonas.remove(miPersona);
 
 	}
 
-	public String editarPersona(Persona miPersona) {
+	public String editarPersona(VoGestionUsuarios miPersona) {
 
 		System.out.println("Entro editar");
 
@@ -117,7 +117,7 @@ public class TablaBean {
 
 	}
 
-	public void guardarPersona(Persona miPersona) {
+	public void guardarPersona(VoGestionUsuarios miPersona) {
 
 		setRes(personaDao.editarPersona(miPersona));
 
@@ -140,7 +140,7 @@ public class TablaBean {
 	public void registroRequisitos() {
 
 		setRes(personaDao.ingresarRequisito(miPersona));
-		miPersona = new Persona();
+		miPersona = new VoGestionUsuarios();
 
 	}
 
@@ -150,13 +150,13 @@ public class TablaBean {
 		
 	}
 
-	public void eliminarRequisitos(Persona mipersona) {
+	public void eliminarRequisitos(VoGestionUsuarios mipersona) {
 
 		setRes(personaDao.eliminarRequisito(miPersona));
 		listaRequisitos.remove(miPersona);
 	}
 	
-	public void guardarRequisitos(Persona miPersona){
+	public void guardarRequisitos(VoGestionUsuarios miPersona){
 		
 		setRes(personaDao.guardarRequisitos(miPersona));
 		miPersona.setEditar(false);
@@ -164,19 +164,19 @@ public class TablaBean {
 		
 	}
 
-	public ArrayList<Persona> getListaPersonas() {
+	public ArrayList<VoGestionUsuarios> getListaPersonas() {
 		return listaPersonas;
 	}
 
-	public void setListaPersonas(ArrayList<Persona> listaPersonas) {
+	public void setListaPersonas(ArrayList<VoGestionUsuarios> listaPersonas) {
 		this.listaPersonas = listaPersonas;
 	}
 
-	public Persona getMiPersona() {
+	public VoGestionUsuarios getMiPersona() {
 		return miPersona;
 	}
 
-	public void setMiPersona(Persona miPersona) {
+	public void setMiPersona(VoGestionUsuarios miPersona) {
 		this.miPersona = miPersona;
 	}
 
@@ -212,11 +212,11 @@ public class TablaBean {
 		this.res = res;
 	}
 
-	public ArrayList<Persona> getListaRequisitos() {
+	public ArrayList<VoGestionUsuarios> getListaRequisitos() {
 		return listaRequisitos;
 	}
 
-	public void setListaRequisitos(ArrayList<Persona> listaRequisitos) {
+	public void setListaRequisitos(ArrayList<VoGestionUsuarios> listaRequisitos) {
 		this.listaRequisitos = listaRequisitos;
 	}
 }

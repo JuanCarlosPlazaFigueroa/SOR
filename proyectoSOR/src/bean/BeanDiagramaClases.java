@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.swing.ImageIcon;
 
-import dao.SubirImagenDao;
-import vo.Persona;
-import vo.PersonaDiagrama;
+import dao.DaoDiagramaClases;
+import vo.VoGestionUsuarios;
+import vo.VoDiagramaClases;
 
 @ManagedBean
 @SessionScoped
-public class TablaDiagrama {
+public class BeanDiagramaClases {
 
 	InputStream inputStream = null;
 	
 	OutputStream outputstream = null;
-	Persona miPersona;
+	VoGestionUsuarios miPersona;
 	List<String> miLista;
-	PersonaDiagrama miDiagrama;
+	VoDiagramaClases miDiagrama;
 	private Part llenar;
 	private String datosSelect;
 	ImageIcon foto;
@@ -34,16 +34,16 @@ public class TablaDiagrama {
 
 
 
-	SubirImagenDao daoImagen = new SubirImagenDao();
+	DaoDiagramaClases daoImagen = new DaoDiagramaClases();
 
 	@SuppressWarnings("unused")
 	private String llenarContenedor;
 
-	public TablaDiagrama() {
+	public BeanDiagramaClases() {
 
-		miPersona = new Persona();
+		miPersona = new VoGestionUsuarios();
 		miLista = new ArrayList<>();
-		miDiagrama = new PersonaDiagrama();
+		miDiagrama = new VoDiagramaClases();
 
 		listaProyectos();
 
@@ -65,7 +65,7 @@ public class TablaDiagrama {
 				miDiagrama.setImagen(inputStream);
 				System.out.println("Muerete "+ datosSelect);
 
-				SubirImagenDao imagenDao = new SubirImagenDao();
+				DaoDiagramaClases imagenDao = new DaoDiagramaClases();
 				String res = imagenDao.agregarImagen(miDiagrama);
 
 				System.out.println("*******************************");
@@ -96,11 +96,11 @@ public class TablaDiagrama {
 	
 	
 
-	public PersonaDiagrama getMiDiagrama() {
+	public VoDiagramaClases getMiDiagrama() {
 		return miDiagrama;
 	}
 
-	public void setMiDiagrama(PersonaDiagrama miDiagrama) {
+	public void setMiDiagrama(VoDiagramaClases miDiagrama) {
 		this.miDiagrama = miDiagrama;
 	}
 
@@ -143,11 +143,11 @@ public class TablaDiagrama {
 		this.foto = foto;
 	}
 
-	public Persona getMiPersona() {
+	public VoGestionUsuarios getMiPersona() {
 		return miPersona;
 	}
 
-	public void setMiPersona(Persona miPersona) {
+	public void setMiPersona(VoGestionUsuarios miPersona) {
 		this.miPersona = miPersona;
 	}
 

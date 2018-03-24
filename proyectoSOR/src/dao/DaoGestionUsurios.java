@@ -4,13 +4,13 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import conexion.Conexion;
-import vo.Persona;
+import vo.VoGestionUsuarios;
 
-public class PersonaDao {
+public class DaoGestionUsurios {
 
-	Persona miPersona = new Persona();
+	VoGestionUsuarios miPersona = new VoGestionUsuarios();
 
-	public String agregarPersona(Persona miPersona) {
+	public String agregarPersona(VoGestionUsuarios miPersona) {
 
 		String resultado = "";
 
@@ -45,7 +45,7 @@ public class PersonaDao {
 		return resultado;
 	}
 
-	public Persona ingresar(String contraseña, String documento) {
+	public VoGestionUsuarios ingresar(String contraseña, String documento) {
 		Connection connection = null;
 		Conexion conexion = new Conexion();
 		PreparedStatement preStatement = null;
@@ -85,13 +85,13 @@ public class PersonaDao {
 
 	}
 
-	public ArrayList<Persona> obtenerListaPersonas() {
+	public ArrayList<VoGestionUsuarios> obtenerListaPersonas() {
 		Connection connection = null;
 		Conexion miConexion = new Conexion();
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
-		ArrayList<Persona> listaPersonas = null;
+		ArrayList<VoGestionUsuarios> listaPersonas = null;
 
 		connection = miConexion.getConnection();
 
@@ -106,7 +106,7 @@ public class PersonaDao {
 
 				while (result.next() == true) {
 
-					miPersona = new Persona();
+					miPersona = new VoGestionUsuarios();
 
 					miPersona.setNombre(result.getString("nombre"));
 					miPersona.setDocumento(result.getString("documento"));
@@ -126,7 +126,7 @@ public class PersonaDao {
 		return listaPersonas;
 	}
 
-	public String eliminarPersona(Persona miPersona) {
+	public String eliminarPersona(VoGestionUsuarios miPersona) {
 
 		Connection connection = null;
 		Conexion miConexion = new Conexion();
@@ -157,7 +157,7 @@ public class PersonaDao {
 		return resp;
 	}
 
-	public String editarPersona(Persona miPersona) {
+	public String editarPersona(VoGestionUsuarios miPersona) {
 		String resultado = "";
 		Connection connection = null;
 		Conexion miConexion = new Conexion();
@@ -188,15 +188,15 @@ public class PersonaDao {
 		return resultado;
 	}
 
-	public ArrayList<Persona> consultaIndiovidual(String documento) {
+	public ArrayList<VoGestionUsuarios> consultaIndiovidual(String documento) {
 
 		Connection connection = null;
 		Conexion miConexion = new Conexion();
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
-		ArrayList<Persona> lista = null;
-		Persona miPersona = null;
+		ArrayList<VoGestionUsuarios> lista = null;
+		VoGestionUsuarios miPersona = null;
 		connection = miConexion.getConnection();
 
 		String consulta = "SELECT * FROM usuarios where documento=" + documento;
@@ -212,7 +212,7 @@ public class PersonaDao {
 
 				if (result.next() == true) {
 
-					miPersona = new Persona();
+					miPersona = new VoGestionUsuarios();
 					miPersona.setNombre(result.getString("nombre"));
 					miPersona.setDocumento(result.getString("documento"));
 					miPersona.setCorreo(result.getString("correo"));
@@ -231,7 +231,7 @@ public class PersonaDao {
 		return lista;
 	}
 
-	public String ingresarRequisito(Persona miPersona) {
+	public String ingresarRequisito(VoGestionUsuarios miPersona) {
 
 		String resultado = "";
 
@@ -268,14 +268,14 @@ public class PersonaDao {
 
 	}
 
-	public ArrayList<Persona> obtenerListaRequisitos() {
+	public ArrayList<VoGestionUsuarios> obtenerListaRequisitos() {
 
 		Connection connection = null;
 		Conexion miConexion = new Conexion();
 		PreparedStatement statement = null;
 		ResultSet result = null;
 
-		ArrayList<Persona> listaRequisitos = null;
+		ArrayList<VoGestionUsuarios> listaRequisitos = null;
 
 		connection = miConexion.getConnection();
 
@@ -290,7 +290,7 @@ public class PersonaDao {
 
 				while (result.next() == true) {
 
-					miPersona = new Persona();
+					miPersona = new VoGestionUsuarios();
 					miPersona.setId(result.getString("idRequisitos"));
 					miPersona.setFuncionalidad(result.getString("funcionalidad"));
 					miPersona.setDescripcion(result.getString("descripcion"));
@@ -310,7 +310,7 @@ public class PersonaDao {
 
 	}
 
-	public String eliminarRequisito(Persona miPersona) {
+	public String eliminarRequisito(VoGestionUsuarios miPersona) {
 
 		Connection connection = null;
 		Conexion miConexion = new Conexion();
@@ -342,7 +342,7 @@ public class PersonaDao {
 
 	}
 
-	public String guardarRequisitos(Persona miPersona) {
+	public String guardarRequisitos(VoGestionUsuarios miPersona) {
 		String resultado = "";
 		Connection connection = null;
 		Conexion miConexion = new Conexion();
@@ -374,7 +374,7 @@ public class PersonaDao {
 	}
 	
 	
-	public Persona contadorProgreso(){
+	public VoGestionUsuarios contadorProgreso(){
 		
 		Connection connection = null;
 		Conexion conexion = new Conexion();

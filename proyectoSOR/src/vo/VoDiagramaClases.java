@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 
-public class PersonaDiagrama {
+public class VoDiagramaClases {
 
 	
 	private String nombre;

@@ -17,14 +17,14 @@ import javax.swing.ImageIcon;
 import com.mysql.jdbc.Buffer;
 
 import conexion.Conexion;
-import vo.Persona;
-import vo.PersonaDiagrama;
+import vo.VoGestionUsuarios;
+import vo.VoDiagramaClases;
 
-public class SubirImagenDao {
+public class DaoDiagramaClases {
 
-	PersonaDiagrama miDiagrama = new PersonaDiagrama();
+	VoDiagramaClases miDiagrama = new VoDiagramaClases();
 
-	public String agregarImagen(PersonaDiagrama miDiagrama) {
+	public String agregarImagen(VoDiagramaClases miDiagrama) {
 
 		String resultado = "";
 
@@ -102,7 +102,7 @@ public class SubirImagenDao {
 
 	}
 
-	public HttpServletResponse mostrarImagen(PersonaDiagrama miDiagrama) {
+	public HttpServletResponse mostrarImagen(VoDiagramaClases miDiagrama) {
 
 		Connection connection = null;
 		Conexion miConexion = new Conexion();

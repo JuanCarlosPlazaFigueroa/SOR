@@ -1,6 +1,6 @@
 package vo;
 
-public class Persona {
+public class VoGestionUsuarios {
 
 	private String nombre;
 	private String correo;
@@ -23,13 +23,13 @@ public class Persona {
 	
 	private String nombreProyecto;
 	
-	public Persona() {
+	public VoGestionUsuarios() {
 
 	}
 
 	
 
-	public Persona(String nombre, String correo, String documento, String contra, String usuario, boolean editar, String rol) {
+	public VoGestionUsuarios(String nombre, String correo, String documento, String contra, String usuario, boolean editar, String rol) {
 		super();
 		this.nombre = nombre;
 		this.correo = correo;

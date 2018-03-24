@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head jsf:id="head">
+<title>Consultar proyecto</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+
+<link rel="stylesheet" href="css/estilos-consultaProyecto.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link rel="stylesheet" href="marelialize/css/materialize.css" />
+
+<h:link />
+</head>
+
+<body>
+
+
+	<nav class="green darken-3">
+		<div class="nav-wrapper">
+			<a class="brand-logo"></a>
+
+
+
+			<ul class=" hide-on-med-and-down">
+				<li><a href="crearCu.jsf">crear proyecto<i
+						class="material-icons right">history</i></a></li>
+			</ul>
+
+			<ul class=" hide-on-med-and-down">
+				<li><a href="consultarCU.jsf">Consultar proyecto<i
+						class="material-icons right">history</i></a></li>
+			</ul>
+
+
+
+		</div>
+	</nav>
+
+
+
+
+	<h4>consulta caso de uso</h4>
+
+	<h:form>
+
+
+		<div class="card-panel panel-boton-1 right" style="width: 50%;">
+
+			<div class="input-field col s6 l6 doss">
+
+				<i class="material-icons left ">search</i>
+
+				<h:inputText id="search" type="search" styleClass="col s6 l6">
+				</h:inputText>
+
+
+				<h:commandButton action="#{beanCU.consultaProyecto()}"
+					value="consulta especifica"
+					styleClass="waves-effect waves-light btn green " />
+
+
+				<h:commandButton action="#{beanCU.consultaProyecto()}"
+					value="consulta en general"
+					styleClass="waves-effect waves-light btn green " />
+			</div>
+
+		</div>
+
+
+
+
+
+			<div class="card-panel panelP" style="width: 90%;">
+
+
+				<h:dataTable value="#{beanCU.listaProyectos}" var="datos"
+					border="4" rendered="#{beanCU.listaProyectos.size()>0}"
+					styleClass="centered striped">
+
+
+					<h:column styleClass="col-nombre">
+						<f:facet name="header">NOMBRE CASO DE USO </f:facet>
+						<h:inputText value="#{datos.casoUso}"
+							rendered="#{datos.editar}" styleClass="inputTabla" />
+						<h:outputLabel value="#{datos.casoUso}"
+							rendered="#{ not datos.editar}" styleClass="inputTabla" />
+					</h:column>
+
+					<h:column styleClass="col-integrantes">
+						<f:facet name="header">DESCRIPCION</f:facet>
+						<h:outputLabel value="#{datos.descripcionCU}"
+							rendered="#{not datos.editar}" styleClass="inputTabla" />
+						<h:inputText value="#{datos.descripcionCU}"
+							rendered="#{datos.editar}" styleClass="inputTabla" />
+
+					</h:column>
+
+					<h:column styleClass="col-descri">
+							<f:facet name="header">ROL</f:facet>
+						<h:outputLabel value="#{datos.rol}"
+							rendered="#{not datos.editar}" styleClass="inputTabla" />
+						<h:inputText value="#{datos.rol}"
+							rendered="#{datos.editar}" styleClass="inputTabla" />
+					</h:column>
+					<h:column>
+
+						<h:commandLink action="#{beanCU.editar(datos)}" value="editar"
+							rendered="#{not datos.editar}" />
+
+						<h:commandLink action="#{beanCU.guardar(datos)}"
+							value="guardar Cambio" rendered="#{datos.editar}" />
+
+
+
+					</h:column>
+
+
+				</h:dataTable>
+			</div>
+
+		</h:form>
+      
+      
+
+	
+
+
+
+
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="marelialize/js/materialize.min.js"></script>
+
+	<script>
+        $('.input-field').input({
+            inDuration: 300,
+            outDuration: 225,
+            constrainWidth: false, // Does not change width of dropdown to that of the activator
+            hover: true, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: false, // Displays dropdown below the button
+            alignment: 'left', // Displays dropdown with edge aligned to the left of button
+            stopPropagation: false // Stops event propagation
+
+         
+        }
+        );
+
+                
+    </script>
+
+	<script>
+
+
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Hoy',
+            clear: 'Limpiar',
+            close: 'Listo',
+            closeOnSelect: false // Close upon selecting a date,
+          });
+
+
+        
+		</script>
+
+	<script>
+
+		  $('.modal').modal({
+		      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+		      opacity: .5, // Opacity of modal background
+		      inDuration: 300, // Transition in duration
+		      outDuration: 200, // Transition out duration
+		      startingTop: '4%', // Starting top style attribute
+		      endingTop: '10%', // Ending top style attribute
+		      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+		        
+		        console.log(modal, trigger);
+		      },
+		      
+		    }
+		  );
+		   
+
+       
+
+        
+		</script>
+
+
+
+
+
+</body>
+</html>

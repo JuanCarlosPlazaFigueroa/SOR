@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<head jsf:id="head">
+<title>Proyectos en proceso</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+
+<link rel="stylesheet" href="marelialize/css/estilosFormulario.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link rel="stylesheet" href="marelialize/css/materialize.css" />
+
+<h:link />
+</head>
+
+<body>
+
+
+
+
+	<ul id='dropdown1' class='dropdown-content'>
+
+		<li><a href="crearCu.jsf"><i class="material-icons"></i>registrar
+				caso de uso</a></li>
+
+		<li><a href="consultarCU.jsf"><i class="material-icons"></i>consultar
+				caso de uso</a></li>
+	</ul>
+
+
+
+	<nav class="green darken-3">
+		<div class="nav-wrapper">
+			<a class="brand-logo"></a>
+
+			<ul class=" hide-on-med-and-down">
+				<li><a href="consultarProyecto.jsf">Editar proyecto<i
+						class="material-icons right">history</i></a></li>
+
+
+				<li><a class="dropdown-button" href="#!"
+					data-activates="dropdown1">Caso de uso<i
+						class="material-icons right">arrow_drop_down</i></a></li>
+
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+
+		<h:form>
+
+			<div class="card-panel ">
+
+				<div class="input-field ">
+					<h:inputText id="Nombre"
+						value="#{tablaBean.miPersona.nombreProyecto}" type="text"
+						class="validate"></h:inputText>
+					<label for="Nombre">NOMBRE PROYECTO</label>
+				</div>
+
+				<div class="input-field">
+					<h:inputText id="Personas"
+						value="#{tablaBean.miPersona.integrantes}" type="text"
+						class="validate"></h:inputText>
+					<label for="Personas">INTEGRANTES</label>
+				</div>
+
+
+				<div class="input-field">
+					<h:inputTextarea value="#{tablaBean.miPersona.descripcion}"
+						id="textarea1" styleClass="area "></h:inputTextarea>
+					<label for="Personas">DESCRIPCION</label>
+				</div>
+				
+				</div>
+		
+
+
+		<div id="modal1" class="modal">
+			<div class="modal-content">
+
+
+				<p>
+					Felicitaciones este nuevo proyecto se a registrado con exito<BR />
+					¿Desea registrar otro proyecto?
+				</p>
+
+
+			</div>
+
+
+			<div class="modal-footer">
+
+
+				<h:commandButton action="#{tablaBean.agregarPersona()}"
+					value="Registrar  Proyecto"
+					styleClass="waves-effect waves-light btn  left green darken-3"></h:commandButton>
+
+
+				<h:commandButton value="no,gracias"
+					styleClass="waves-effect waves-light btn botom  green darken-3"
+					action="login.jsf" actionListener="#{tablaBean.agregarPersona()}"></h:commandButton>
+
+			</div>
+		</div>
+
+</h:form>
+
+		<a
+			class="waves-effect waves-light btn modal-trigger green tooltipped botonG right"
+			data-delay="50" data-tooltip="guardar proyecto creado" id="boton"
+			href="#modal1">Guardar</a>
+
+
+	</div>
+
+	
+
+
+
+
+
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="marelialize/js/materialize.min.js"></script>
+
+	<script>
+        $('.input-field').input({
+            inDuration: 300,
+            outDuration: 225,
+            constrainWidth: false, // Does not change width of dropdown to that of the activator
+            hover: true, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: false, // Displays dropdown below the button
+            alignment: 'left', // Displays dropdown with edge aligned to the left of button
+            stopPropagation: false // Stops event propagation
+
+         
+        }
+        );
+
+                
+    </script>
+
+	<script>
+
+
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 15, // Creates a dropdown of 15 years to control year,
+            today: 'Hoy',
+            clear: 'Limpiar',
+            close: 'Listo',
+            closeOnSelect: false // Close upon selecting a date,
+          });
+
+
+        
+		</script>
+
+	<script>
+
+		  $('.modal').modal({
+		      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+		      opacity: .5, // Opacity of modal background
+		      inDuration: 300, // Transition in duration
+		      outDuration: 200, // Transition out duration
+		      startingTop: '4%', // Starting top style attribute
+		      endingTop: '10%', // Ending top style attribute
+		      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+		        
+		        console.log(modal, trigger);
+		      },
+		      
+		    }
+		  );
+		   
+
+       
+
+        
+		</script>
+	<SCRIPT>
+
+		$(document).ready(function(){
+		    $('.tooltipped').tooltip({delay: 50});
+		  });
+		        
+
+
+		</SCRIPT>
+
+
+
+
+</body>
+</html>
