@@ -5,23 +5,25 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import dao.DaoGestionProyectos;
 import dao.DaoGestionUsurios;
+import vo.VoGestionProyectos;
 import vo.VoGestionUsuarios;
 
 @ManagedBean
 @SessionScoped
 public class BeanGestionProyectos {
 
-	ArrayList<VoGestionUsuarios> listaProyectos;
+	ArrayList<VoGestionProyectos> listaProyectos;
 
-	private VoGestionUsuarios miPersona;
+	private VoGestionProyectos miPersona;
 
 	private boolean muestraInfo;
 	private String Respuesta;
 
-	DaoGestionUsurios personaDao = new DaoGestionUsurios();
+	DaoGestionProyectos personaDao = new DaoGestionProyectos();
 	
-	ArrayList<VoGestionUsuarios> listaPersonas = new ArrayList<>();
+	ArrayList<VoGestionProyectos> listaPersonas = new ArrayList<>();
 	
 	private String NombreProyecto;
 	private String Integrantes;
@@ -30,7 +32,7 @@ public class BeanGestionProyectos {
 	private String consulta;
 
 	public BeanGestionProyectos() {
-		miPersona = new VoGestionUsuarios();
+		miPersona = new VoGestionProyectos();
 
 	}
 
@@ -38,7 +40,7 @@ public class BeanGestionProyectos {
 		res = "";
 		System.out.println(NombreProyecto + Integrantes + Descripcion);
 		setRes(personaDao.agregarPersona(miPersona));
-		miPersona = new VoGestionUsuarios();
+		miPersona = new VoGestionProyectos();
 
 	}
 
@@ -60,13 +62,13 @@ public class BeanGestionProyectos {
 		
 	}
 
-	public void editar(VoGestionUsuarios miPersona) {
+	public void editar(VoGestionProyectos miPersona) {
 		miPersona.setEditar(true);
 
 		
 	}
 
-	public void guardar(VoGestionUsuarios miPersona) {
+	public void guardar(VoGestionProyectos miPersona) {
 
 		System.out.println("entro a tabla bean " + miPersona.getNombreProyecto() + miPersona.getDescripcion() + miPersona.getIntegrantes() );
 		setRes(personaDao.guardar(miPersona));
@@ -123,11 +125,11 @@ public class BeanGestionProyectos {
 		this.res = res;
 	}
 
-	public VoGestionUsuarios getMiPersona() {
+	public VoGestionProyectos getMiPersona() {
 		return miPersona;
 	}
 
-	public void setMiPersona(VoGestionUsuarios miPersona) {
+	public void setMiPersona(VoGestionProyectos miPersona) {
 		this.miPersona = miPersona;
 	}
 
@@ -139,11 +141,11 @@ public class BeanGestionProyectos {
 		return this.consulta = consulta;
 	}
 
-	public ArrayList<VoGestionUsuarios> getListaProyectos() {
+	public ArrayList<VoGestionProyectos> getListaProyectos() {
 		return listaProyectos;
 	}
 
-	public void setListaProyectos(ArrayList<VoGestionUsuarios> listaProyectos) {
+	public void setListaProyectos(ArrayList<VoGestionProyectos> listaProyectos) {
 		this.listaProyectos = listaProyectos;
 	}
 
